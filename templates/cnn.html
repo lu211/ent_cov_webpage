@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+   <div class="CNN">
+     <h1>CNN</h1>
+       <div class="row">
+           <script>
+                   for(var i = 1; i < 100; i++) {
+                       document.body.innerHTML += '<div id="column1" style="float:left; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/cnn_article_' + i + '.jpg" alt="cnn_art_' + i + '" style="float:center;width:auto;" width="400" height="300"></p></div>'
+                       document.body.innerHTML += '<div id="column2" style="float:right; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/cnn_sum_' + i + '.jpg" alt="cnn_sum_' + i + '" style="float:center;width:auto;" width="400" height="300"></p></div>'
+                   }
+
+           </script>
+       </div>
+   </div>
+ {% endblock %}

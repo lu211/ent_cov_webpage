@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+   <div class="dailymail_art_text">
+     <h2>Dailymail Article Text</h2>
+       <div class="dropdown1">
+          <button class="dropbtn1">Select text..</button>
+          <div class="dropdown1-content">
+              <a href="{{ url_for('dailymail_art_text') }}">Article</a>
+              <a href="{{ url_for('dailymail_sum_text') }}">Summaries</a>
+          </div>
+       </div>
+       <div class="row">
+            <div class="row">
+           {% for element in data_dailymail %}
+                <div class="card">
+                    <h1>{{element[0]}}</h1>
+                    {{element[1]}}
+                </div>
+           {% endfor %}
+            </div>
+           <script>
+           </script>
+       </div>
+   </div>
+ {% endblock %}

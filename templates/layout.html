@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Entity Coverage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="logo">Analysing Bias in News Summarization</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li>
+              <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">CNN</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="{{ url_for('cnn') }}">Entity Coverage</a>
+                  <a href="{{ url_for('cnn_art_text') }}">Full Text</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown">
+                <button onclick="myFunction2()" class="dropbtn">Dailymail</button>
+                <div id="myDropdown2" class="dropdown-content">
+                  <a href="{{ url_for('dailymail') }}">Entity Coverage</a>
+                  <a href="{{ url_for('dailymail_art_text') }}">Full Text</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown">
+                <button onclick="myFunction3()" class="dropbtn">BBC</button>
+                <div id="myDropdown3" class="dropdown-content">
+                  <a href="{{ url_for('bbc') }}">Entity Coverage</a>
+                  <a href="{{ url_for('bbc_art_text') }}">Full Text</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+      }
+
+      function myFunction3() {
+        document.getElementById("myDropdown3").classList.toggle("show");
+      }
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
