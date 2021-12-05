@@ -8,7 +8,9 @@ To run the website, simply download all files of this repository and open them i
 
 Make sure you have flask installed. If not just run the following command (works only if pip is installed!).
 
-`pip install flask`
+```Python
+pip install flask
+```
 
 Then just open _hello.py_ and run the script.
 You should get the following output:
