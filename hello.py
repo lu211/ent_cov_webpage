@@ -104,6 +104,7 @@ def cnn_sum_text():
 
 ## Dailymail ##
 
+# Fluent Text
 @app.route('/dailymail_article_text/')
 def dailymail_art_text():
     filename_dailymail = os.path.join(app.static_folder, 'dailymail_article_genre_fluent.json')
@@ -115,32 +116,83 @@ def dailymail_art_text():
         for x, y in element.items():
             t = (x,y)
             text_dailymail.append(t)
-    return render_template('dailymail_art_text.html', data_dailymail=text_dailymail)
+    return render_template('dailymail/text/dailymail_art_text.html', data_dailymail=text_dailymail)
 
 @app.route('/dailymail_summary_text/')
 def dailymail_sum_text():
     filename_dailymail_sum = os.path.join(app.static_folder, 'dailymail_all_sum_genre_fluent.json')
     with open(filename_dailymail_sum) as f_dailymail_sum:
         data_dailymail_sum = json.loads(f_dailymail_sum.read())
-        return render_template('dailymail_sum_text.html', data_dailymail_sum=data_dailymail_sum)
+        return render_template('dailymail/text/dailymail_sum_text.html', data_dailymail_sum=data_dailymail_sum)
 
 
+# Ref Sum
 @app.route('/dailymail/')
 def dailymail():
-    return render_template('dailymail.html')
+    return render_template('dailymail/ent/refsum/dailymail.html')
 
 @app.route('/dailymail_coverage_pers/')
 def dailymail_pers():
-    return render_template('dailymail_pers.html')
+    return render_template('dailymail/ent/refsum/dailymail_pers.html')
 
 @app.route('/dailymail_coverage_loc/')
 def dailymail_loc():
-    return render_template('dailymail_loc.html')
+    return render_template('dailymail/ent/refsum/dailymail_loc.html')
 
 @app.route('/dailymail_coverage_org/')
 def dailymail_org():
-    return render_template('dailymail_org.html')
+    return render_template('dailymail/ent/refsum/dailymail_org.html')
 
+# BART
+@app.route('/dailymail_bart/')
+def dailymail_bart():
+    return render_template('dailymail/ent/bart/dailymail_bart.html')
+
+@app.route('/dailymail_coverage_pers_bart/')
+def dailymail_bart_pers():
+    return render_template('dailymail/ent/bart/dailymail_bart_pers.html')
+
+@app.route('/dailymail_coverage_loc_bart/')
+def dailymail_bart_loc():
+    return render_template('dailymail/ent/bart/dailymail_bart_loc.html')
+
+@app.route('/dailymail_coverage_org_bart/')
+def dailymail_bart_org():
+    return render_template('/dailymail/ent/bart/dailymail_bart_org.html')
+
+# Pegasus
+@app.route('/dailymail_pegasus/')
+def dailymail_pegasus():
+    return render_template('dailymail/ent/pegasus/dailymail_pegasus.html')
+
+@app.route('/dailymail_coverage_pers_pegasus/')
+def dailymail_pegasus_pers():
+    return render_template('dailymail/ent/pegasus/dailymail_pegasus_pers.html')
+
+@app.route('/dailymail_coverage_loc_pegasus/')
+def dailymail_pegasus_loc():
+    return render_template('dailymail/ent/pegasus/dailymail_pegasus_loc.html')
+
+@app.route('/dailymail_coverage_org_pegasus/')
+def dailymail_pegasus_org():
+    return render_template('dailymail/ent/pegasus/dailymail_t5_org.html')
+
+# T5
+@app.route('/dailymail_t5/')
+def dailymail_t5():
+    return render_template('dailymail/ent/t5/dailymail_t5.html')
+
+@app.route('/dailymail_coverage_pers_t5/')
+def dailymail_t5_pers():
+    return render_template('dailymail/ent/t5/dailymail_t5_pers.html')
+
+@app.route('/dailymail_coverage_loc_t5/')
+def dailymail_t5_loc():
+    return render_template('dailymail/ent/t5/dailymail_t5_loc.html')
+
+@app.route('/dailymail_coverage_org_t5/')
+def dailymail_t5_org():
+    return render_template('dailymail/ent/t5/dailymail_t5_org.html')
 
 ## BBC ##
 

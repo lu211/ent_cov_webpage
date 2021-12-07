@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+   <div class="dailymail">
+     <h1>Dailymail Entity Coverage for PERS, LOC, ORG</h1>
+       <div class="dropdown1">
+          <button class="dropbtn1">Select entity..</button>
+          <div class="dropdown1-content">
+              <a href="{{ url_for('dailymail_pers') }}">Person</a>
+              <a href="{{ url_for('dailymail_loc') }}">Location</a>
+              <a href="{{ url_for('dailymail_org') }}">Organisation</a>
+              <a href="{{ url_for('dailymail') }}">All three</a>
+          </div>
+       </div>
+       <div class="dropdown1">
+          <button class="dropbtn1">Select summary..</button>
+          <div class="dropdown1-content">
+              <a href="{{ url_for('dailymail') }}">Ref. Summary</a>
+              <a href="{{ url_for('dailymail_bart') }}">BART</a>
+              <a href="{{ url_for('dailymail_pegasus') }}">Pegasus</a>
+              <a href="{{ url_for('dailymail_t5') }}">T5</a>
+          </div>
+       </div>
+       <div class="row">
+           <div id="column1" style="float:left; margin:0; width:50%;"><h3>Article</h3></div>
+           <div id="column2" style="float:right; margin:0; width:50%;"><h3>Summary</h3></div>
+           <script>
+                   for(var i = 1; i < 100; i++) {
+                       document.body.innerHTML += '<dic id="column1" style="float:left; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/dailymail/coverage/all/refsum/all_dailymail_article_' + i + '.jpg" alt="all_dailymail_art_' + i + '" style="float:center;width:auto;" width="400" height="300"></p></div>'
+                       document.body.innerHTML += '<div id="column2" style="float:right; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/dailymail/coverage/all/refsum/all_dailymail_sum_' + i + '.jpg" alt="all_dailymail_sum_' + i + '" style="float:center;width:auto;"width="400" height="300"></p></div>'
+                   }
+
+           </script>
+       </div>
+   </div>
+ {% endblock %}
