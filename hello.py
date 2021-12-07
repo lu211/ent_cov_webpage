@@ -8,25 +8,81 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+## CNN ##
+
+# Refsum
 @app.route('/cnn/')
 def cnn():
-    return render_template('cnn.html')
+    return render_template('cnn/ent/refsum/cnn.html')
 
 @app.route('/cnn_coverage_pers/')
 def cnn_pers():
-    return render_template('cnn_pers.html')
+    return render_template('cnn/ent/refsum/cnn_pers.html')
 
 @app.route('/cnn_coverage_loc/')
 def cnn_loc():
-    return render_template('cnn_loc.html')
+    return render_template('cnn/ent/refsum/cnn_loc.html')
 
 @app.route('/cnn_coverage_org/')
 def cnn_org():
-    return render_template('cnn_org.html')
+    return render_template('cnn/ent/refsum/cnn_org.html')
 
+# BART
+@app.route('/cnn_bart/')
+def cnn_bart():
+    return render_template('cnn/ent/bart/cnn_bart.html')
+
+@app.route('/cnn_coverage_bart_pers/')
+def cnn_bart_pers():
+    return render_template('cnn/ent/bart/cnn_bart_pers.html')
+
+@app.route('/cnn_coverage_bart_loc/')
+def cnn_bart_loc():
+    return render_template('cnn/ent/bart/cnn_bart_loc.html')
+
+@app.route('/cnn_coverage_bart_org/')
+def cnn_bart_org():
+    return render_template('cnn/ent/bart/cnn_bart_org.html')
+
+# Pegasus
+@app.route('/cnn_pegasus/')
+def cnn_pegasus():
+    return render_template('cnn/ent/pegasus/cnn_pegasus.html')
+
+@app.route('/cnn_coverage_pegasus_pers/')
+def cnn_pegasus_pers():
+    return render_template('cnn/ent/pegasus/cnn_pegasus_pers.html')
+
+@app.route('/cnn_coverage_pegasus_loc/')
+def cnn_pegasus_loc():
+    return render_template('cnn/ent/pegasus/cnn_pegasus_loc.html')
+
+@app.route('/cnn_coverage_pegasus_org/')
+def cnn_pegasus_org():
+    return render_template('cnn/ent/pegasus/cnn_pegasus_org.html')
+
+# T5
+@app.route('/cnn_t5/')
+def cnn_t5():
+    return render_template('cnn/ent/t5/cnn_t5.html')
+
+@app.route('/cnn_coverage_t5_pers/')
+def cnn_t5_pers():
+    return render_template('cnn/ent/t5/cnn_t5_pers.html')
+
+@app.route('/cnn_coverage_t5_loc/')
+def cnn_t5_loc():
+    return render_template('cnn/ent/t5/cnn_t5_loc.html')
+
+@app.route('/cnn_coverage_t5_org/')
+def cnn_t5_org():
+    return render_template('cnn/ent/t5/cnn_t5_org.html')
+
+
+# Fluent text
 @app.route('/cnn_article_text/')
 def cnn_art_text():
-    filename_cnn = os.path.join(app.static_folder, 'cnn_article_genre_fluent.json')
+    filename_cnn = os.path.join(app.static_folder, 'dailymail_article_genre_fluent.json')
     with open(filename_cnn) as f_cnn:
         data_cnn = json.loads(f_cnn.read())
         f_cnn.close()
@@ -35,16 +91,18 @@ def cnn_art_text():
         for x, y in element.items():
             t = (x,y)
             text_cnn.append(t)
-    return render_template('cnnl_art_text.html', data_cnn=text_cnn)
+    return render_template('cnn/text/cnn_art_text.html', data_cnn=text_cnn)
+
 
 @app.route('/cnn_summary_text/')
 def cnn_sum_text():
     filename_cnn_sum = os.path.join(app.static_folder, 'cnn_all_sum_genre_fluent.json')
     with open(filename_cnn_sum) as f_cnn_sum:
         data_cnn_sum = json.loads(f_cnn_sum.read())
-        return render_template('cnn_sum_text.html', data_cnn_sum=data_cnn_sum)
+        return render_template('cnn/text/cnn_sum_text.html', data_cnn_sum=data_cnn_sum)
 
-# Dailymail
+
+## Dailymail ##
 
 @app.route('/dailymail_article_text/')
 def dailymail_art_text():
@@ -84,23 +142,9 @@ def dailymail_org():
     return render_template('dailymail_org.html')
 
 
-# BBC
-@app.route('/bbc/')
-def bbc():
-    return render_template('/bbc/ent/refsum/bbc.html')
+## BBC ##
 
-@app.route('/bbc_all_bart/')
-def bbc_bart():
-    return render_template('bbc/ent/bart/bbc_bart.html')
-
-@app.route('/bbc_all_pegasus/')
-def bbc_pegasus():
-    return render_template('bbc/ent/pegasus/bbc_pegasus.html')
-
-@app.route('/bbc_all_t5/')
-def bbc_t5():
-    return render_template('bbc/ent/t5/bbc_t5.html')
-
+# Fluent Text
 @app.route('/bbc_article_text/')
 def bbc_art_text():
     filename = os.path.join(app.static_folder, 'bbc_article_genre_fluent.json')
@@ -120,6 +164,23 @@ def bbc_sum_text():
     with open(filename_sum) as f_sum:
         data1 = json.loads(f_sum.read())
         return render_template('bbc/text/bbc_sum_text.html', data_sum=data1)
+
+# All entities
+@app.route('/bbc/')
+def bbc():
+    return render_template('/bbc/ent/refsum/bbc.html')
+
+@app.route('/bbc_all_bart/')
+def bbc_bart():
+    return render_template('bbc/ent/bart/bbc_bart.html')
+
+@app.route('/bbc_all_pegasus/')
+def bbc_pegasus():
+    return render_template('bbc/ent/pegasus/bbc_pegasus.html')
+
+@app.route('/bbc_all_t5/')
+def bbc_t5():
+    return render_template('bbc/ent/t5/bbc_t5.html')
 
 # Ref Sum
 @app.route('/bbc_coverage_pers/')

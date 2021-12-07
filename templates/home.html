@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="home">
-    <h1>A Python product</h1>
-    <p>This website was built with Python via the Flask framework.</p>
+    <h1>Analysing Entities in News Summarization</h1>
+    <p>This website was built to visualize the entity coverage of news article in comparison with their summaries.</p>
+    <p>The data used here is retrieved from the corpora of CNN/Dailymail and XSum (BBC) which contains many articles and
+      their reference summaries, mined from the named newspaper. An entity analysis was processed over this data, as well as
+    automatic summarization of the articles was created, by using up-to-date models for abstractive summarization.
+    The models used here are T5, Pegasus and BART.</p>
+    <p>Have fun exploring!</p>
   </div>
 {% endblock %}

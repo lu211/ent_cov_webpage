@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+   <div class="cnn_t5_pers">
+     <h1>CNN Coverage of Entity PERSON (T5)</h1>
+       <div class="dropdown1">
+          <button class="dropbtn1">Select entity..</button>
+          <div class="dropdown1-content">
+              <a href="{{ url_for('cnn_t5_pers') }}">Person</a>
+              <a href="{{ url_for('cnn_t5_loc') }}">Location</a>
+              <a href="{{ url_for('cnn_t5_org') }}">Organisation</a>
+              <a href="{{ url_for('cnn_t5') }}">All three</a>
+          </div>
+       </div>
+       <div class="dropdown1">
+          <button class="dropbtn1">Select summary..</button>
+          <div class="dropdown1-content">
+              <a href="{{ url_for('cnn_pers') }}">Ref. Summary</a>
+              <a href="{{ url_for('cnn_bart_pers') }}">BART</a>
+              <a href="{{ url_for('cnn_pegasus_pers') }}">Pegasus</a>
+              <a href="{{ url_for('cnn_t5_pers') }}">T5</a>
+          </div>
+       </div>
+       <div class="row">
+           <div id="column1" style="float:left; margin:0; width:50%;"><h3>Article</h3></div>
+           <div id="column2" style="float:right; margin:0; width:50%;"><h3>Summary</h3></div>
+           <script>
+                   for(var i = 1; i < 100; i++) {
+                       document.body.innerHTML += '<dic id="column1" style="float:left; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/cnn/coverage/person/t5/pers_cnn_article_' + i + '.jpg" alt="pers_cnn_art_' + i + '" style="float:center;width:auto;" width="400" height="300"></p></div>'
+                       document.body.innerHTML += '<div id="column2" style="float:right; margin:0; width:50%;"><p><img src="http://127.0.0.1:5000/static/images/cnn/coverage/person/t5/pers_cnn_t5_' + i + '.jpg" alt="pers_cnn_t5_' + i + '" style="float:center;width:auto;"width="400" height="300"></p></div>'
+                   }
+
+           </script>
+       </div>
+   </div>
+ {% endblock %}
