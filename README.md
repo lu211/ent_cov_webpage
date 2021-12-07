@@ -2,7 +2,7 @@
 
 This repository holds a Python Flask application. It contains a website which visualizes the entity coverage of news articles with their summaries. 
 The datasets which were used are the CNN/Dailymail and BBC (Xsum) corpora. For each newspaper, 100 articles with their reference summary were choosen and processed regarding the entities they containing. The coverage itself, which entities are appearing in the summary, which in the article, are displayed on the website.
-For BBC, the entity coverage was not only processed for the reference summaries, but also for their abstractive generated summarization. The models used are BART, Pegasus and T5.
+For all data, the entity coverage was not only processed for the reference summaries, but also for their automatic generated summarizations. The abstractive summarization models used are BART, Pegasus and T5.
 
 To run the website, simply download all files of this repository and open them in Python.
 
